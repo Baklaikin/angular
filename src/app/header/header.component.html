@@ -1,0 +1,14 @@
+<div title="header" class="header">
+    <div class="container">
+        <a href="https://www.itc.ua">
+            Currency
+        </a>
+        <div >
+            <ul class="currency-value">
+                <li *ngFor = "let cur of currency" class="currency-box">
+                    {{cur.ccy}}: {{cur.sale.slice(0,5)}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

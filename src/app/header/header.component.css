@@ -1,0 +1,34 @@
+@import url("../app.component.css");
+
+.header {
+    display: flex;
+    padding: 16px;
+}
+
+
+.currency-box {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    width: 80px;
+    height: 30px;
+    border-radius: 4px;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0);
+}
+
+.currency-value {
+    display: flex;
+}
+
+.currency-box:not:last-of-type {
+    margin-right: 30px;
+}
+
+.choose-currency {
+    margin: 0 auto;
+    padding: 16px;
+    border-radius: 4px;
+    width: 100%;
+    box-shadow:0px 1px 3px 1px rgba(0, 0, 0, 0);
+    ;
+}

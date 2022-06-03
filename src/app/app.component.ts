@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
+// import { GetCurrencyValuesService } from './get-currency-values.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template:
+  `
+  <app-header></app-header>
+  <app-main></app-main>
+  `,
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'baklaikin.github.io';
-}
+};

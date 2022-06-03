@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="currency">
+        <div class="select-container">
+            <select (change)="getSelectedValue($event)" id="firstCurrency" class="select" >
+                <option *ngFor="let item of items" [value]=item.id class="select-option">{{item.name.toUpperCase()}}</option>
+            </select>
+        </div>
+        <div class="select-container">
+            <select (change)="getSelectedValue($event)" id="secondCurrency" class="select">
+                <option *ngFor="let item of items" [value]=item.id class="select-option">{{item.name.toUpperCase()}}</option>
+            </select>
+        </div>
+        <input type="number" name="amount" class="amount" (change)="getSelectedValue ($event)" placeholder="Колличество">
+        </div>
+</div>
+        <div class="container">
+            <p class="result">{{output}}</p>
+        </div> 
+       <!-- <form name="form"> -->
+        <!-- <div>
+            <select id="firstCurrency" name="firstCurrency" (focus)="getSelectedValue ($event)">
+                <option value="UAH" selected>UAH</option>
+                <option value="USD">USD</option>
+                <option value="Eur">EUR</option>
+            </select>
+            <input type="number" name="amount" class="amount" (change)="getSelectedValue ($event)">
+        </div>
+        <div>
+            <select id="secondCurrency" name="secondCurrency" (focus)="getSelectedValue ($event)">
+                <option value="UAH">UAH</option>
+                <option value="USD" selected>USD</option>
+                <option value="Eur">EUR</option>
+            </select>
+        </div>
+        <div>
+            <p>{{result}}</p>
+        </div> -->
+        <!-- </form > -->

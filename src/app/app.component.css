@@ -4,7 +4,10 @@
     align-items: center;
     justify-content: space-between;
     margin:0 auto;
+    padding: 12px;
     width:600px;
     height:auto;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 

@@ -34,12 +34,22 @@ export class MainComponent implements OnInit {
     this.data.currentMessage.subscribe(message => this.message = message)
   }
 
-  calculateRate(firstCurrencyValue: number, secondCurrencyValue: number, quantity: number) {
-    
-    if (firstCurrencyValue && secondCurrencyValue && quantity) {
-      this.result = (firstCurrencyValue / secondCurrencyValue) * this.quantity;
+  calculateRate() {
+    const usd = this.message.find((item: any) => {
+      if (item.ccy === "USD") {
+        return item.sale
+      }
+    })
+    if (this.firstCurrency === this.items[4].name.toUpperCase() && this.secondCurrency === this.items[1].name.toUpperCase()) {
+      this.result = ((this.firstCurrencyValue / this.secondCurrencyValue) * Number(usd.sale)) * this.quantity;
+      this.result = Number(this.result.toFixed(2));
+      this.output = this.result.toString();
+      return;
     }
-    
+    if (this.firstCurrencyValue && this.secondCurrencyValue &&this. quantity) {
+      this.result = (this.firstCurrencyValue / this.secondCurrencyValue) * this.quantity;
+    }
+  
     this.result = Number(this.result.toFixed(2));
     this.output = this.result.toString();
     return this.output;
@@ -77,7 +87,7 @@ export class MainComponent implements OnInit {
     } 
     if (event.target.name === "amount") {
       this.quantity = Number(event.target.value);
-      this.calculateRate(this.firstCurrencyValue,this.secondCurrencyValue,this.quantity);
+      // this.calculateRate(this.firstCurrencyValue,this.secondCurrencyValue,this.quantity);
       return;
     }
   }

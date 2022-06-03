@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="currency">
+    <div class="currency currency-wrapper">
         <div class="select-container">
             <select (change)="getSelectedValue($event)" id="firstCurrency" class="select" >
                 <option *ngFor="let item of items" [value]=item.id class="select-option">{{item.name.toUpperCase()}}</option>
@@ -16,7 +16,7 @@
         <input type="number" name="amount" class="amount" (change)="getSelectedValue ($event)" placeholder="Колличество">
         </div>
 </div>
-        <div class="container">
+        <div class="container result-container">
             <p class="result">{{output}}</p>
             <button type="button" class="button" (click)="calculateRate()">Посчитать</button>
         </div> 

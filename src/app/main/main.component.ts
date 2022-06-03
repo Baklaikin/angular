@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
   quantity: number = 0;
   result: number = 0;
   output: string = "";
+  reverse: boolean = false;
 
   message: any;
   
@@ -41,13 +42,21 @@ export class MainComponent implements OnInit {
       }
     })
     if (this.firstCurrency === this.items[4].name.toUpperCase() && this.secondCurrency === this.items[1].name.toUpperCase()) {
-      this.result = ((this.firstCurrencyValue / this.secondCurrencyValue) * Number(usd.sale)) * this.quantity;
+      if (this.reverse) {
+        this.result = ((this.secondCurrencyValue / this.firstCurrencyValue) * Number(usd.sale)) * this.quantity;
+      } else {
+        this.result = ((this.firstCurrencyValue / this.secondCurrencyValue) * Number(usd.sale)) * this.quantity;
+      }
       this.result = Number(this.result.toFixed(2));
       this.output = this.result.toString();
       return;
     }
-    if (this.firstCurrencyValue && this.secondCurrencyValue &&this. quantity) {
-      this.result = (this.firstCurrencyValue / this.secondCurrencyValue) * this.quantity;
+    if (this.firstCurrencyValue && this.secondCurrencyValue && this.quantity) {
+      if (this.reverse) {
+        this.result = (this.secondCurrencyValue / this.firstCurrencyValue) * this.quantity;
+      } else {
+        this.result = (this.firstCurrencyValue / this.secondCurrencyValue) * this.quantity;
+      }
     }
   
     this.result = Number(this.result.toFixed(2));
@@ -90,5 +99,10 @@ export class MainComponent implements OnInit {
       // this.calculateRate(this.firstCurrencyValue,this.secondCurrencyValue,this.quantity);
       return;
     }
+  }
+
+  changeDirection() {
+    this.reverse = !this.reverse;
+    this.calculateRate();
   }
 }

@@ -5,6 +5,7 @@
                 <option *ngFor="let item of items" [value]=item.id class="select-option">{{item.name.toUpperCase()}}</option>
             </select>
         </div>
+        <button type="button" (click)="changeDirection()"><img src="../../images/reverse.svg" alt="reverse icon" width="20px" height="20px"></button>
         <div class="select-container">
             <select (change)="getSelectedValue($event)" id="secondCurrency" class="select">
                 <option *ngFor="let item of items" [value]=item.id class="select-option">{{item.name.toUpperCase()}}</option>

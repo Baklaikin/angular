@@ -10,7 +10,7 @@
 }
 
 .select-container{
-    width:180px;
+    width:150px;
     height:100%;
     border-radius: 4px;
     border: 1px solid lightgrey;
@@ -58,4 +58,15 @@
     border-radius: 4px;
     border:1px solid lightgrey;
     color: black;
+}
+
+.reverse-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border:none;
+    background-color: transparent;
 }

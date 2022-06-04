@@ -36,11 +36,18 @@ export class MainComponent implements OnInit {
   }
 
   calculateRate() {
+    const btc = this.items[4].name.toUpperCase();
     const usd = this.message.find((item: any) => {
       if (item.ccy === "USD") {
         return item.sale
       }
     })
+
+    if (this.firstCurrency === btc || this.secondCurrency === btc) {
+      this.calcToBtc(this.reverse);
+      return;
+    }
+
     if (this.firstCurrency === this.items[4].name.toUpperCase() && this.secondCurrency === this.items[1].name.toUpperCase()) {
       if (this.reverse) {
         this.result = ((this.secondCurrencyValue / this.firstCurrencyValue) * Number(usd.sale)) * this.quantity;
@@ -51,6 +58,7 @@ export class MainComponent implements OnInit {
       this.output = this.result.toString();
       return;
     }
+
     if (this.firstCurrencyValue && this.secondCurrencyValue && this.quantity) {
       if (this.reverse) {
         this.result = (this.secondCurrencyValue / this.firstCurrencyValue) * this.quantity;
@@ -63,6 +71,34 @@ export class MainComponent implements OnInit {
     this.output = this.result.toString();
     return this.output;
   }
+
+  calcToBtc(reverse: boolean) {
+    const usd = this.items[2].name.toUpperCase();
+    const eur = this.items[3].name.toUpperCase();    
+    
+    if (this.firstCurrency === usd || this.secondCurrency === usd) {
+      if (this.reverse) {
+        this.result = (this.secondCurrencyValue / 1) * this.quantity;
+      } else {
+        this.result = (1 / this.secondCurrencyValue) * this.quantity;
+      }
+    } else if (this.firstCurrency === eur || this.secondCurrency === eur) {
+      const euroSale = this.message.find((item:any) => item.ccy.toUpperCase() === eur);
+      const usdSale = this.message.find((item:any) => item.ccy.toUpperCase() === usd);
+      const priceInEuro = euroSale.sale / usdSale.sale;
+
+      if (this.reverse) {
+        this.result = (this.secondCurrencyValue / priceInEuro) * this.quantity;
+      } else {
+        this.result = (priceInEuro / this.secondCurrencyValue) * this.quantity;
+      }
+    }
+
+    this.result = Number(this.result.toFixed(6));
+    this.output = this.result.toString();
+    return;
+  }
+  
  
   getSelectedValue(event: any) {
   
